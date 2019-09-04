@@ -12,7 +12,7 @@ class Login extends Component {
       <section id="login" className="container">
         <div className="row align-items-center justify-content-center">
           <div className="col-md-5 login-form">
-            <h3 className="title">Se Connecter</h3>
+            <h3 className="title"><i class="fas fa-sign-in-alt"></i> Se Connecter</h3>
             <form>
               <div className="form-group">
                 <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" />
