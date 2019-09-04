@@ -1,0 +1,9 @@
+$primary-color: #FF5722;
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.sticky-top {
+  background-color: $primary-color!important;
+}
+
+a.nav-link {
+  color: #FFF!important
+}
