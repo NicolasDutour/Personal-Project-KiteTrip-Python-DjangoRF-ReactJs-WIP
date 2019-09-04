@@ -10,6 +10,7 @@
 
 # production
 /build
+kitetrip/settings.py
 
 /env
 
