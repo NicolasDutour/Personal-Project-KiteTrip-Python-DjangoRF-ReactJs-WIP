@@ -4,13 +4,17 @@ const initialState = {
   token: null
 }
 
+const authSuccess = (state, action) => {
+  return {
+    ...state,
+    token: action.token
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_SUCCESS:
-      return {
-        ...state,
-        token: action.token
-      }
+      return authSuccess(state, action)
     default:
       return state;
   }
