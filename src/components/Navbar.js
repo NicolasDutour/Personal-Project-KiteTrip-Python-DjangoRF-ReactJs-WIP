@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { logout } from '../store/actions/auth'
 
 import '../assets/css/navbar.scss'
 class Navbar extends Component {
 
   render() {
 
-    const { isAuthenticated } = this.props
+    const { isAuthenticated, logout } = this.props
 
     return (
       <Fragment>
@@ -38,7 +41,7 @@ class Navbar extends Component {
                         <Link to="/profile/" className="nav-link">Bienvenue (Profil)</Link>
                       </li>
                       <li className="nav-item mr-3">
-                        <div className="nav-link">
+                        <div className="nav-link" onClick={() => logout()}>
                           <i className="fas fa-sign-out-alt"></i> Se déconnecter</div>
                       </li>
                     </Fragment>
@@ -66,5 +69,16 @@ class Navbar extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
 
-export default Navbar
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

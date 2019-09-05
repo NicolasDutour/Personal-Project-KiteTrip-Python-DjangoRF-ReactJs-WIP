@@ -8,6 +8,14 @@ export const authSuccess = token => {
   }
 }
 
+
+export const logout = () => {
+  localStorage.removeItem("token")
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  }
+}
+
 export const authLogin = (email, password) => {
   return dispatch => {
     axios
