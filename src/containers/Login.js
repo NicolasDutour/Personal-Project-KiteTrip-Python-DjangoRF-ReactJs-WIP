@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import { authLogin } from '../store/actions/auth'
 
 import '../assets/css/loginAndSignup.scss'
 
@@ -20,6 +22,12 @@ handleChange = e => {
   })
 }
 
+handleSubmit = e => {
+  e.preventDefault()
+  const { email, password } = this.state
+  this.props.login(email, password)
+}
+
 
   render() {
 
@@ -30,7 +38,7 @@ handleChange = e => {
         <div className="row align-items-center justify-content-center">
           <div className="col-md-5 login-form">
             <h3 className="title"><i className="fas fa-sign-in-alt"></i> Se Connecter</h3>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value={email} onChange={this.handleChange} />
               </div>
@@ -49,5 +57,10 @@ handleChange = e => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email, password) => dispatch(authLogin(email, password))
+  }
+}
 
-export default Login
+export default connect(null, mapDispatchToProps)(Login)
