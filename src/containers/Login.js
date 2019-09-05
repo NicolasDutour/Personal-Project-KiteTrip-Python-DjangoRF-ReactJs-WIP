@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { authLogin } from '../store/actions/auth'
@@ -16,22 +16,27 @@ class Login extends Component {
     }
   }
 
-handleChange = e => {
-  this.setState({
-    [e.target.name]: e.target.value
-  })
-}
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
-handleSubmit = e => {
-  e.preventDefault()
-  const { email, password } = this.state
-  this.props.login(email, password)
-}
+  handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = this.state
+    this.props.login(email, password)
+  }
 
 
   render() {
 
+    const { isAuthenticated } = this.props
     const { email, password } = this.state
+
+    if (isAuthenticated) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <section id="login" className="container">
@@ -57,10 +62,18 @@ handleSubmit = e => {
   }
 }
 
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token,
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     login: (email, password) => dispatch(authLogin(email, password))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

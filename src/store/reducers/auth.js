@@ -1,13 +1,15 @@
 import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
-  token: null
+  token: localStorage.getItem("token"),
+  isAuthenticated: null
 }
 
 const authSuccess = (state, action) => {
   return {
     ...state,
-    token: action.token
+    token: action.token,
+    isAuthenticated: true
   }
 }
 

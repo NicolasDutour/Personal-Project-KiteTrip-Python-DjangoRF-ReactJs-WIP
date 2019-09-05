@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -8,11 +9,12 @@ import Signup from './containers/Signup'
 
 
 class App extends Component {
+
   render() {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar {...this.props} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/" component={Home} />
@@ -22,5 +24,10 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
 
-export default App;
+export default connect(mapStateToProps)(App);

@@ -6,6 +6,8 @@ class Navbar extends Component {
 
   render() {
 
+    const { isAuthenticated } = this.props
+
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
@@ -28,26 +30,32 @@ class Navbar extends Component {
 
               <ul className="navbar-nav ml-auto">
 
-                <Fragment>
-                  <li className="nav-item mr-3">
-                    <Link to="/profile/" className="nav-link">Bienvenue (Profil)</Link>
-                  </li>
-                  <li className="nav-item mr-3">
-                    <div className="nav-link">
-                      <i className="fas fa-sign-out-alt"></i> Se déconnecter</div>
-                  </li>
-                </Fragment>
+                {
+                  isAuthenticated ?
 
-                <Fragment>
-                  <li className="nav-item mr-3">
-                    <Link to="/signup" className="nav-link">
-                      <i className="fas fa-user-plus"></i> S'inscrire</Link>
-                  </li>
-                  <li className="nav-item mr-3">
-                    <Link to="/login" className="nav-link">
-                      <i className="fas fa-sign-in-alt"></i> Se Connecter</Link>
-                  </li>
-                </Fragment>
+                    <Fragment>
+                      <li className="nav-item mr-3">
+                        <Link to="/profile/" className="nav-link">Bienvenue (Profil)</Link>
+                      </li>
+                      <li className="nav-item mr-3">
+                        <div className="nav-link">
+                          <i className="fas fa-sign-out-alt"></i> Se déconnecter</div>
+                      </li>
+                    </Fragment>
+
+                    :
+
+                    <Fragment>
+                      <li className="nav-item mr-3">
+                        <Link to="/signup" className="nav-link">
+                          <i className="fas fa-user-plus"></i> S'inscrire</Link>
+                      </li>
+                      <li className="nav-item mr-3">
+                        <Link to="/login" className="nav-link">
+                          <i className="fas fa-sign-in-alt"></i> Se Connecter</Link>
+                      </li>
+                    </Fragment>
+                }
 
               </ul>
             </div>
