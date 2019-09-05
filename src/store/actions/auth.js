@@ -1,5 +1,12 @@
 import axios from 'axios'
+import * as actionTypes from './actionTypes'
 
+export const authSuccess = token => {
+  return {
+    type: actionTypes.AUTH_SUCCESS,
+    token
+  }
+}
 
 export const authLogin = (email, password) => {
   return dispatch => {
@@ -12,6 +19,7 @@ export const authLogin = (email, password) => {
         console.log(res.data)
         const token = res.data.key
         localStorage.setItem('token', token)
+        dispatch(authSuccess(token))
       })
       .catch(err => {
         console.log(err.response)
