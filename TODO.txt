@@ -1,0 +1,1 @@
+Fix register component  passwords, if empty, register success=>  not normal

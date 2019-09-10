@@ -31,7 +31,7 @@ class Login extends Component {
 
   render() {
 
-    const { isAuthenticated } = this.props
+    const { isAuthenticated, error } = this.props
     const { email, password } = this.state
 
     if (isAuthenticated) {
@@ -46,9 +46,13 @@ class Login extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value={email} onChange={this.handleChange} />
+                {error && error.email && <div className="error">{error.email}</div>}
+                {error && error.non_field_errors && <div className="error">{error.non_field_errors}</div>}
               </div>
               <div className="form-group">
                 <input name="password" type="password" className="form-control" id="password" placeholder="Mot de passe" value={password} onChange={this.handleChange} />
+                {error && error.password && <div className="error">{error.password}</div>}
+                {error && error.non_field_errors && <div className="error">{error.non_field_errors}</div>}
               </div>
               <button type="submit" className="btn btn-primary">Se Connecter</button>
             </form>
@@ -66,6 +70,7 @@ class Login extends Component {
 const mapStateToProps = state => {
   return {
     token: state.auth.token,
+    error: state.auth.error,
     isAuthenticated: state.auth.isAuthenticated
   }
 }

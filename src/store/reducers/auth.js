@@ -1,19 +1,21 @@
 import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticated: null
+  token: null,
+  isAuthenticated: null,
+  error: null
 }
 
 const authSuccess = (state, action) => {
   return {
     ...state,
     token: action.token,
-    isAuthenticated: true
+    isAuthenticated: true,
+    error: null
   }
 }
 
-const authLogout = (state, action) => {
+const logout = (state, action) => {
   return {
     ...state,
     token: null,
@@ -25,20 +27,17 @@ const authFail = (state, action) => {
   return {
     ...state,
     token: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    error: action.error
   }
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.AUTH_SUCCESS:
-      return authSuccess(state, action)
-    case actionTypes.AUTH_LOGOUT:
-      return authLogout(state, action)
-    case actionTypes.AUTH_FAIL:
-      return authFail(state, action)
-    default:
-      return state;
+    case actionTypes.AUTH_SUCCESS: return authSuccess(state, action)
+    case actionTypes.AUTH_LOGOUT: return logout(state, action)
+    case actionTypes.AUTH_FAIL: return authFail(state, action)
+    default: return state;
   }
 }
 

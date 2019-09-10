@@ -30,7 +30,7 @@ class Signup extends Component {
 
   render() {
 
-    const { isAuthenticated } = this.props
+    const { isAuthenticated, error } = this.props
     const { username, email, password1, password2 } = this.state
 
     if (isAuthenticated) {
@@ -42,18 +42,23 @@ class Signup extends Component {
         <div className="row align-items-center justify-content-center">
           <div className="col-md-5 signup-form">
             <h3 className="title"><i className="fas fa-user-plus"></i> S'inscrire</h3>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input name="username" type="text" className="form-control" id="username" aria-describedby="usernameHelp" placeholder="Pseudo" value={username} onChange={this.handleChange} />
+                {error && <div className="error"> {error.username} </div>}
               </div>
               <div className="form-group">
                 <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value={email} onChange={this.handleChange} />
+                {error && <div className="error"> {error.email} </div>}
               </div>
               <div className="form-group">
                 <input name="password1" type="password" className="form-control" id="password1" placeholder="Mot de passe" value={password1} onChange={this.handleChange} />
+                {error && <div className="error"> {error.password1} </div>}
               </div>
               <div className="form-group">
-                <input name="password2" type="password" className="form-control" id="password2" placeholder="Confirmer mot de passe"  value={password2} onChange={this.handleChange} />
+                <input name="password2" type="password" className="form-control" id="password2" placeholder="Confirmer mot de passe" value={password2} onChange={this.handleChange} />
+                {error && <div className="error">{error.non_field_errors}</div>}
+                {error && <div className="error"> {error.password2} </div>}
               </div>
               <button type="submit" className="btn btn-primary">S'inscrire</button>
             </form>
@@ -70,6 +75,7 @@ class Signup extends Component {
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    error: state.auth.error,
   }
 }
 
