@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
 import Trips from './containers/Trips'
+import tripDetail from './components/tripDetail'
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/trips" component={Trips} />
+          <Route exact path="/trips/:tripID" component={tripDetail} />
           <Route exact path="/" component={Home} />
         </div>
       </Router>
