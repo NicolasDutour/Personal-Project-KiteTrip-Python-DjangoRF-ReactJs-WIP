@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Login from './containers/Login'
 import Signup from './containers/Signup'
+import Trips from './containers/Trips'
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Navbar />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route exact path="/trips" component={Trips} />
           <Route exact path="/" component={Home} />
         </div>
       </Router>
