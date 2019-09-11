@@ -3,7 +3,7 @@ from .models import Trip
 
 
 class tripAdmin(admin.ModelAdmin):
-    list_display = ['driver', 'departure_street',
+    list_display = ['departure_street',
                     'departure_date', 'created_at']
 
 
