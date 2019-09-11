@@ -25,7 +25,7 @@ const Trip = ({ data }) => {
               <Link to={`/trips/${data.id}`}>
                 <div className="departure-date">
                   <div className="departure-time">
-                    <div><i class="far fa-clock"></i> {departureTimeFormat}</div>
+                    <div><i className="far fa-clock"></i> {departureTimeFormat}</div>
                   </div>
                   <div className="date">
                     {departureDateFormat}
