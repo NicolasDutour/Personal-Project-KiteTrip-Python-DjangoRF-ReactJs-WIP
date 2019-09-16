@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+
+import '../assets/css/profile.scss'
 class Profile extends Component {
 
   constructor(props) {
