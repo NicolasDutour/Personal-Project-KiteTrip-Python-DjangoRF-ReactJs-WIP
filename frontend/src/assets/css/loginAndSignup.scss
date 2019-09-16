@@ -1,0 +1,43 @@
+$primary-color: #FF5722;
+
+#login, #signup {
+  margin-top: 120px;
+
+  .error {
+    color: $primary-color;
+    font-size: 0.9rem
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 30px;
+
+    i.fas {
+      color: $primary-color
+    }
+  }
+
+  .login-form, .signup-form  {
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 18px 0px rgba(0,0,0,1);
+
+    .redirect {
+      margin-top: 10px;
+
+      a {
+        color: $primary-color;
+
+        &:hover {
+          color: $primary-color
+        }
+      }
+    }
+
+    button.btn.btn-primary {
+      background-color: $primary-color;
+      color: #FFF;
+      border-color: #FFF
+    }
+  }
+}
