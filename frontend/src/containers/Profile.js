@@ -13,6 +13,7 @@ class Profile extends Component {
 
   componentDidMount() {
     const profileID = this.props.match.params.profileID
+    console.log('props', this.props)
     axios
       .get(`http://127.0.0.1:8000/profile/${profileID}`)
       .then(res => {

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from cars.models import Car
 
 
 class Profile(models.Model):
@@ -24,6 +25,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=100, null=True)
     zip_code = models.CharField(max_length=5, null=True, blank=True)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
