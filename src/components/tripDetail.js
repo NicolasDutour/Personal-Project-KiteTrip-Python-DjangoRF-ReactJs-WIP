@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import moment from 'moment'
-import 'moment/locale/fr';
+
 
 
 import '../assets/css/trip-detail.scss'
