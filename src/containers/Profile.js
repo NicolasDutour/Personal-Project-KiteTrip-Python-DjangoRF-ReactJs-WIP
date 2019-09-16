@@ -1,6 +1,26 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
 class Profile extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
+  componentDidMount() {
+    const profileID = this.props.match.params.profileID
+    axios
+      .get(`http://127.0.0.1:8000/profile/${profileID}`)
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          user: res.data
+        })
+      })
+      .catch(err => console.log(err.response))
+  }
 
   render() {
 
