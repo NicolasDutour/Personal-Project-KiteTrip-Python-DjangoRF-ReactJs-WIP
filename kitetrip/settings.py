@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'trips.apps.TripsConfig',
+    'profiles.apps.ProfilesConfig',
 
     'rest_framework',
     'rest_framework.authtoken',
