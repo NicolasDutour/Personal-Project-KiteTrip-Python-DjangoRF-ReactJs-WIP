@@ -78,6 +78,19 @@ export const authLogin = (email, password) => {
   }
 }
 
+export const getUserDetails = () => {
+  return dispatch => {
+    axios
+      .get('http://127.0.0.1:8000/rest-auth/user/')
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        dispatch(authFail(err.response.data))
+      })
+  }
+}
+
 
 export const authCheckState = () => {
   return dispatch => {
