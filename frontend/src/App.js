@@ -9,8 +9,13 @@ import Signup from './containers/Signup'
 import Trips from './containers/Trips'
 import tripDetail from './components/tripDetail'
 import Profile from './containers/Profile'
+import { authCheckState } from './store/actions/auth'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.checkState()
+  }
 
   render() {
     return (
@@ -35,4 +40,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    checkState: () => dispatch(authCheckState())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
