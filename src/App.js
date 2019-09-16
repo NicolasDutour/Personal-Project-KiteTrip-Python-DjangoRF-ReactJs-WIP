@@ -8,7 +8,7 @@ import Login from './containers/Login'
 import Signup from './containers/Signup'
 import Trips from './containers/Trips'
 import tripDetail from './components/tripDetail'
-
+import Profile from './containers/Profile'
 
 class App extends Component {
 
@@ -19,6 +19,7 @@ class App extends Component {
           <Navbar />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/profile/:profileID" component={Profile} />
           <Route exact path="/trips" component={Trips} />
           <Route exact path="/trips/:tripID" component={tripDetail} />
           <Route exact path="/" component={Home} />
