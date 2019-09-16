@@ -54,6 +54,18 @@ class Profile extends Component {
 
               <p> <span>Code Postal:</span> {user.zip_code} </p>
             </div>
+
+            <div className="col-md-6 car">
+              <h3 className="car-title">Voiture</h3>
+
+              {/* <p> <span>Marque:</span> { user.car.car_brand } </p> */}
+
+              <p> <span>Modèle:</span>  </p>
+
+              <p> <span>Couleur:</span>  </p>
+
+              <p> <span>Immatriculation:</span>  </p>
+            </div>
           </div>
         </div>
       </section >
